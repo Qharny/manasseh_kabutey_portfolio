@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class AnimatedAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const AnimatedAppBar({super.key});
+  final Function(String) onItemClicked;
+
+  const AnimatedAppBar({super.key, required this.onItemClicked});
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -19,6 +21,7 @@ class AnimatedAppBar extends StatelessWidget implements PreferredSizeWidget {
             textColor: const Color(0xFF0A0A32),
             hoverColor: Colors.yellow,
             fontsize: 25,
+            onClicked: onItemClicked,
           ),
       ],
     );
@@ -30,12 +33,14 @@ class _AnimatedAppBarItem extends StatefulWidget {
   final Color textColor;
   final Color hoverColor;
   final int fontsize;
+  final Function(String) onClicked;
 
   const _AnimatedAppBarItem({
     required this.title,
     required this.textColor,
     required this.hoverColor,
     required this.fontsize,
+    required this.onClicked,
   });
 
   @override
@@ -62,11 +67,12 @@ class _AnimatedAppBarItemState extends State<_AnimatedAppBarItem> {
           ),
         ),
         child: TextButton(
-          onPressed: () {},
+          onPressed: () => widget.onClicked(widget.title.toLowerCase()),
           child: Text(
             widget.title,
             style: TextStyle(
               color: _isHovered ? widget.hoverColor : widget.textColor,
+              fontSize: widget.fontsize.toDouble(),
             ),
           ),
         ),

@@ -7,80 +7,122 @@ class HeroPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height,
-      decoration: const BoxDecoration(color: Color(0xFFD9D9D9)
-          // gradient: LinearGradient(
-          //   begin: Alignment.topLeft,
-          //   end: Alignment.bottomRight,
-          //   colors: [Colors.blue.shade900, Colors.blue.shade600],
-          // ),
-          ),
-      child: Stack(
-        children: [
-          Positioned(
-            top: 0,
-            right: 0,
-            child: Image.network(
-              "https://avatars.githubusercontent.com/u/107959408?v=4",
-              height: MediaQuery.of(context).size.height * 0.6,
-            ),
-            // Image.asset(
-            //   'assets/images/hero.jpg',
-            //   height: MediaQuery.of(context).size.height * 0.6,
-            // ),
-          ),
-          Positioned(
-            top: MediaQuery.of(context).size.height * 0.3,
-            left: 40,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  "Hi There,",
-                  style: TextStyle(
-                    fontSize: 36,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.white,
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        // image: DecorationImage(
+        //   image: AssetImage('assets/images/hero.jpg'),
+        //   fit: BoxFit.cover,
+        // ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 40),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Hi There,",
+                    style: TextStyle(
+                      fontSize: 36,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF1E2A5A),
+                    ),
                   ),
-                ),
-                const SizedBox(height: 10),
-                const Text(
-                  "I'm Manasseh Kabutey Kwame",
-                  style: TextStyle(
-                    fontSize: 48,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.white,
+                  const SizedBox(height: 10),
+                  RichText(
+                    text: const TextSpan(
+                      children: [
+                        TextSpan(
+                          text: "I'm Manasseh ",
+                          style: TextStyle(
+                            fontSize: 36,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF1E2A5A),
+                          ),
+                        ),
+                        TextSpan(
+                          text: "Kabutey",
+                          style: TextStyle(
+                            fontSize: 36,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFFFF8C00),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                const SizedBox(height: 20),
-                const Text(
-                  "Software Engineer",
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white70,
+                  const SizedBox(height: 20),
+                  const Text(
+                    "I Am Into",
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xFF1E2A5A),
+                    ),
                   ),
-                ),
-                const SizedBox(height: 30),
-                ElevatedButton(
-                  onPressed: () {
-                    // Add action for the button
-                  },
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.blue.shade900,
-                    backgroundColor: Colors.white,
-                  ),
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                    child: Text(
-                      "View My Work",
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: () {
+                      // Add action for the button
+                    },
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: const Color(0xFF3F00FF),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 30, vertical: 15),
+                    ),
+                    child: const Text(
+                      "About Me",
                       style: TextStyle(fontSize: 18),
                     ),
                   ),
-                ),
-              ],
+                  const SizedBox(height: 30),
+                  Row(
+                    children: List.generate(
+                      6,
+                      (index) => Padding(
+                        padding: const EdgeInsets.only(right: 10),
+                        child: Container(
+                          width: 12,
+                          height: 12,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color(0xFF1E2A5A),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+            Expanded(
+              child: Center(
+                child: Container(
+                  width: 300,
+                  height: 300,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Color(0xFFFFD700),
+                  ),
+                  child: ClipOval(
+                    child: Image.asset(
+                      'assets/images/hero.jpg',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
