@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/hero.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const Portfolio());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Portfolio extends StatelessWidget {
+  const Portfolio({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Developer Portfolio',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-       ),
-      home: const PortfolioPage(),
+      home: PortfolioPage(),
     );
   }
 }
@@ -27,163 +23,54 @@ class PortfolioPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFD9D9D9),
       appBar: AppBar(
-        title: const Text('My Portfolio'),
+        backgroundColor: Colors.blue,
+        leading: const Icon(
+          Icons.laptop,
+          color: Colors.white,
+        ),
+        actions: [
+          Row(
+            children: [
+              TextButton(
+                onPressed: () {},
+                child: const Text(
+                  "Home",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              TextButton(
+                onPressed: () {},
+                child: const Text(
+                  "About",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              TextButton(
+                onPressed: () {},
+                child: const Text(
+                  "Project",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              TextButton(
+                onPressed: () {},
+                child: const Text(
+                  "Contact",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ],
+          )
+        ],
       ),
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-           children: <Widget>[
-            const IntroductionSection(),
-             SkillsSection(),
-      const       ProjectsSection(),
-            const ContactSection(),
+          children: [
+            HeroPage(),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class IntroductionSection extends StatelessWidget {
-  const IntroductionSection({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            'John Doe',
-            style: Theme.of(context).textTheme.headlineMedium,
-          ),
-          const SizedBox(height: 10),
-          Text(
-            'Software Developer',
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
-          const SizedBox(height: 20),
-          const Text(
-            'I\'m a passionate software developer with experience in web and mobile development. '
-                'I love creating efficient and user-friendly applications.',
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class SkillsSection extends StatelessWidget {
-  final List<String> skills = [
-    'Flutter', 'Dart', 'JavaScript', 'React', 'Node.js', 'Python', 'SQL'
-  ];
-
-  SkillsSection({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            'Skills',
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
-          const SizedBox(height: 10),
-          Wrap(
-            spacing: 10,
-            children: skills.map((skill) => Chip(label: Text(skill))).toList(),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class ProjectsSection extends StatelessWidget {
-  const ProjectsSection({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            'Projects',
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
-          const SizedBox(height: 10),
-          const ProjectCard(
-            title: 'E-commerce App',
-            description: 'A Flutter-based mobile app for online shopping.',
-          ),
-          const ProjectCard(
-            title: 'Task Management System',
-            description: 'A web application built with React and Node.js for team task management.',
-          ),
-          const ProjectCard(
-            title: 'Weather Forecast App',
-            description: 'A Python-based application that provides real-time weather forecasts.',
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class ProjectCard extends StatelessWidget {
-  final String title;
-  final String description;
-
-  const ProjectCard({super.key, required this.title, required this.description});
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.symmetric(vertical: 10),
-      child: Padding(
-        padding: const EdgeInsets.all(15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              title,
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            const SizedBox(height: 5),
-            Text(description),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class ContactSection extends StatelessWidget {
-  const ContactSection({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            'Contact',
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
-          const SizedBox(height: 10),
-          const Text('Email: john.doe@example.com'),
-          const Text('LinkedIn: linkedin.com/in/johndoe'),
-          const Text('GitHub: github.com/johndoe'),
-        ],
       ),
     );
   }
