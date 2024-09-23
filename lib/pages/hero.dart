@@ -7,22 +7,26 @@ class HeroPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [Colors.blue.shade900, Colors.blue.shade600],
-        ),
-      ),
+      decoration: const BoxDecoration(color: Color(0xFFD9D9D9)
+          // gradient: LinearGradient(
+          //   begin: Alignment.topLeft,
+          //   end: Alignment.bottomRight,
+          //   colors: [Colors.blue.shade900, Colors.blue.shade600],
+          // ),
+          ),
       child: Stack(
         children: [
           Positioned(
             top: 0,
             right: 0,
-            child: Image.asset(
-              'assets/hero_image.png', // Replace with your image
+            child: Image.network(
+              "https://avatars.githubusercontent.com/u/107959408?v=4",
               height: MediaQuery.of(context).size.height * 0.6,
             ),
+            // Image.asset(
+            //   'assets/images/hero.jpg',
+            //   height: MediaQuery.of(context).size.height * 0.6,
+            // ),
           ),
           Positioned(
             top: MediaQuery.of(context).size.height * 0.3,
@@ -49,7 +53,7 @@ class HeroPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 const Text(
-                  "Flutter Developer | UI/UX Enthusiast",
+                  "Software Engineer",
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.w500,
